@@ -1,6 +1,29 @@
 import React, { Component } from "react";
 
 class TodoList extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      todos: [],
+      currentTodo: ""
+    }
+  }
+
+  handleChange(event) {
+    this.setState({
+      currentTodo: event.target.value
+    });
+  }
+
+  handleClick() {
+    this.setState({
+      todos: this.state.todos.concat(this.state.currentTodo)
+    });
+
+    console.log(this.state.todos);
+  }
+
   render() {
     return (
       <div>
@@ -10,11 +33,11 @@ class TodoList extends Component {
         	</div>
 
         	<div className="margin-top-20">
-        		<input type="text" className="form-control" placeholder="Your todo..." />
+        		<input onChange={this.handleChange.bind(this)} name="todoText" type="text" className="form-control" placeholder="Your todo..." />
         	</div>
 
         	<div className="margin-top-20">
-        		<button type="button" id="submit-todo" className="btn btn-primary">Submit Todo</button>
+        		<button onClick={this.handleClick.bind(this)} type="button" id="submit-todo" className="btn btn-primary">Submit Todo</button>
         	</div>
         </div>
 
