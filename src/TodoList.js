@@ -20,8 +20,6 @@ class TodoList extends Component {
     this.setState({
       todos: this.state.todos.concat(this.state.currentTodo)
     });
-
-    console.log(this.state.todos);
   }
 
   render() {
@@ -43,8 +41,11 @@ class TodoList extends Component {
 
         <div id="todo-list" className="small-container">
         	<ol>
-        		<li>I want to go shopping <a href="#">Done</a></li>
-        		<li>Clean the house <a href="#">Done</a></li>
+            { this.state.todos.map((todo) => {
+              return (
+        		    <li>{todo} <a href="#">Done</a></li>
+              )
+            }) }
         	</ol>
         </div>
       </div>
