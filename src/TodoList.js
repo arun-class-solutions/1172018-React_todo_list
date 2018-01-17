@@ -18,7 +18,8 @@ class TodoList extends Component {
 
   handleClick() {
     this.setState({
-      todos: this.state.todos.concat(this.state.currentTodo)
+      todos: this.state.todos.concat(this.state.currentTodo),
+      currentTodo: ""
     });
   }
 
@@ -31,7 +32,7 @@ class TodoList extends Component {
         	</div>
 
         	<div className="margin-top-20">
-        		<input onChange={this.handleChange.bind(this)} name="todoText" type="text" className="form-control" placeholder="Your todo..." />
+        		<input onChange={this.handleChange.bind(this)} name="todoText" type="text" className="form-control" placeholder="Your todo..." value={this.state.currentTodo} />
         	</div>
 
         	<div className="margin-top-20">
