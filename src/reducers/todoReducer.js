@@ -13,7 +13,8 @@ const todoReducer = (state = initialState, action) => {
 
     case "SUBMIT_TODO": {
       return Object.assign({}, state, {
-        todos: state.todos.concat(action.payload)
+        todos: state.todos.concat(action.payload),
+        currentTodo: ""
       });
     }
 
