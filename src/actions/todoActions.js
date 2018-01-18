@@ -6,3 +6,12 @@ export const typingTodo = (todoText) => {
     });
   }
 }
+
+export const submitTodo = (todoText) => {
+  return (dispatch) => {
+    dispatch({
+      type: "SUBMIT_TODO",
+      payload: todoText
+    });
+  }
+}

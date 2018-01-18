@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { typingTodo } from "./actions/todoActions";
+import { typingTodo, submitTodo } from "./actions/todoActions";
 
 class TodoList extends Component {
   constructor() {
@@ -26,6 +26,7 @@ class TodoList extends Component {
     //   todos: this.state.todos.concat(this.state.currentTodo),
     //   currentTodo: ""
     // });
+    this.props.submitTodo(this.props.todos.currentTodo);
   }
 
   render() {
@@ -47,9 +48,9 @@ class TodoList extends Component {
 
         <div id="todo-list" className="small-container">
         	<ol>
-            { this.props.todos.todos.map((todo) => {
+            { this.props.todos.todos.map((todo, index) => {
               return (
-        		    <li>{todo} <a href="#">Done</a></li>
+        		    <li key={index}>{todo} <a href="#">Done</a></li>
               )
             }) }
         	</ol>
@@ -67,7 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    typingTodo: bindActionCreators(typingTodo, dispatch)
+    typingTodo: bindActionCreators(typingTodo, dispatch),
+    submitTodo: bindActionCreators(submitTodo, dispatch)
   }
 }
 
